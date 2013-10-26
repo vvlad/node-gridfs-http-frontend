@@ -1,0 +1,41 @@
+#!/usr/bin/env gridfs-http-frontend-wrapper
+
+
+var path = require('path'),
+    fs   = require('fs'),
+    lib  = path.join(path.dirname(fs.realpathSync(__filename)), '../lib'),
+    argv = require('optimist').argv,
+    config = require(path.resolve(argv.config || path.resolve(lib,"config.js"))),
+    commands = require(path.join(lib,'commands')),
+    command = argv._.shift();
+
+
+process.on('uncaughtException',function(err){
+  console.error(err.message);
+  process.exit(1);
+});
+
+if(command && commands[command]){
+
+  commands[command](argv, config);
+
+}else{
+
+  var stack = [];
+  for(var _command in commands){
+    stack.push(_command);
+  }
+
+  if(command != undefined){
+    console.error("no such command "+command);
+  }
+
+  stack.forEach(function(name){
+    var command = commands[name];
+    // help = (command.help||"").replace(/^/gm,'\t');
+    console.log(name + ":\t" + command.desc);
+  });
+
+}
+
+

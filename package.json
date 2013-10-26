@@ -1,23 +1,26 @@
 {
   "name": "gridfs-http-frontend",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A http forntend for serving files form MongoDB's GridFS",
-  "main": "index.js",
+  "main": "./lib/index.js",
   "dependencies": {
     "gridfs-stream": "~0.4.0",
     "mongodb": "~1.3.19",
-    "extend": "~1.2.1"
+    "extend": "~1.2.1",
+    "optimist": "~0.6.0"
   },
   "author": "Vlad Verestiuc",
   "license": "BSD-2-Clause",
   "bin": {
-    "gridfs-http-frontend": "./index.js"
+    "gridfs-http-frontend": "./bin/gridfs-http-frontend",
+    "gridfs": "./bin/gridfs",
+    "gridfs-http-frontend-wrapper": "./bin/gridfs-http-frontend-wrapper"
   },
-  "repository" :{
-    "type" : "git",
-    "url" : "https://github.com/vvlad/node-gridfs-http-frontend.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vvlad/node-gridfs-http-frontend.git"
   },
-
-  "engines" : { "node" : ">=0.10.3" }
-
+  "engines": {
+    "node": ">=0.10.3"
+  }
 }

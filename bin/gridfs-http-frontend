@@ -1,0 +1,15 @@
+#!/usr/bin/env gridfs-http-frontend-wrapper
+
+
+var path = require('path'),
+    fs   = require('fs'),
+    lib  = path.join(path.dirname(fs.realpathSync(__filename)), '../lib'),
+    argv = require('optimist').argv,
+    config = require(path.resolve(argv.config || path.resolve(lib,"config.js"))),
+    commands = require(path.join(lib,'commands'));
+
+
+
+commands.start(argv, config);
+
+

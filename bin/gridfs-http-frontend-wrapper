@@ -1,0 +1,20 @@
+#!/bin/bash
+
+
+
+NODES=(
+  $(which nodejs node)
+)
+
+export HOSTNAME
+
+NODE=${NODES[0]}
+if [[ ! -z "${NODE}" ]] ; then
+  exec "$NODE" $*
+else
+  echo "Unable to find node js install"
+  exit 1
+fi
+
+
+
