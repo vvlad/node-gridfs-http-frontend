@@ -1,6 +1,6 @@
 {
   "name": "gridfs-http-frontend",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A http forntend for serving files form MongoDB's GridFS",
   "main": "./lib/index.js",
   "keywords": ["mongo", "http", "gridfs", "server"],
