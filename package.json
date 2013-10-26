@@ -3,6 +3,7 @@
   "version": "0.0.3",
   "description": "A http forntend for serving files form MongoDB's GridFS",
   "main": "./lib/index.js",
+  "keywords": ["mongo", "http", "gridfs", "server"],
   "dependencies": {
     "gridfs-stream": "~0.4.0",
     "mongodb": "~1.3.19",
