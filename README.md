@@ -16,7 +16,7 @@ $ gridfs-http-frontend --config=path_to_config.js
 
 There's also an example Upstart script in the 'upstart' directory
 
-##### Config
+#### Config
 Defaults
 * backend = mongodb://127.0.0.1:27017/gridfs
 * listen_address = 127.0.0.1
