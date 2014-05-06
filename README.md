@@ -23,6 +23,7 @@ Defaults
 * listen_port = 3000
 
 Order of config variable resolution
+
 1. --config=[configfile.js]
 2. [executable]/lib/config.js
 3. command line args: --backend=mongodb://my-gridfs.local:27117/gridfs --listen_address=127.0.0.1 --listen_port=300
