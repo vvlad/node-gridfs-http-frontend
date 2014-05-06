@@ -1,13 +1,35 @@
 node-gridfs-http-frontend
 =========================
 
-A http forntend for serving files form MongoDB's GridFS
+HTTP frontend to serve files from MongoDB's GridFS using nodejs
 
+#### Running
+```shell
+$ gridfs-http-frontend
+```
+```shell
+$ gridfs-http-frontend --backend=mongodb://my-gridfs.local:27117/gridfs --listen_address=0.0.0.0 --listen_port=3000
+```
 ```shell
 $ gridfs-http-frontend --config=path_to_config.js
 ```
-config.js
 
+There's also an example Upstart script in the 'upstart' directory
+
+##### Config
+Defaults
+* backend = mongodb://127.0.0.1:27017/gridfs
+* listen_address = 127.0.0.1
+* listen_port = 3000
+
+Order of config variable resolution
+1. --config=[configfile.js]
+2. [executable]/lib/config.js
+3. command line args: --backend=mongodb://my-gridfs.local:27117/gridfs --listen_address=127.0.0.1 --listen_port=300
+
+Command line args will override any coming from config file
+
+###### Example config.js
 
 ```javascript
 
@@ -21,6 +43,17 @@ config.js
   };
 
 ```
+
+#### Requesting files from the server
+GridFS files will then be available at
+http://gridfs-http.local:3000/[grid id]
+
+Optionally - file URLs can then have a forward slash and (anything else) e.g.
+http://gridfs-http.local:3000/[grid id]/my_nice_filename.jpg
+
+Note this differs from the upstream, which served files based on filename.
+
+
 #### gridfs tool
 ```shell
 $ gridfs ls
