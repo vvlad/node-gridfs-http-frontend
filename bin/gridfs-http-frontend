@@ -1,15 +1,28 @@
 #!/usr/bin/env gridfs-http-frontend-wrapper
-
+var DEFAULT_BACKEND = 'mongodb://127.0.0.1:27017';
+var DEFAULT_LISTEN_ADDRESS = '127.0.0.1';
+var DEFAULT_LISTEN_PORT = '3000';
 
 var path = require('path'),
     fs   = require('fs'),
     lib  = path.join(path.dirname(fs.realpathSync(__filename)), '../lib'),
     argv = require('optimist').argv,
-    config = require(path.resolve(argv.config || path.resolve(lib,"config.js"))),
     commands = require(path.join(lib,'commands'));
 
+try {
+    var config = require(path.resolve(argv.config || path.resolve(lib,"config.js" || Null)));
+} catch(err) {
+    var config = {listen:{}};
+}
 
+// Override based on command line
+config.backend = argv['backend'] ? argv['backend'] : config.backend;
+config.listen = argv['listen_address'] ? {address: argv['listen_address']} : config.listen;
+config.listen.port = argv['listen_port'] ? argv['listen_port'] : config.listen.port;
+
+// Finally - any unset to defaults
+config.backend = config.backend ? config.backend : DEFAULT_BACKEND;
+config.listen.address = config.listen.address ? config.listen.address : DEFAULT_LISTEN_ADDRESS;
+config.listen.port = config.listen.port ? config.listen.port : DEFAULT_LISTEN_PORT;
 
 commands.start(argv, config);
-
-
