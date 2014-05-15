@@ -1,6 +1,6 @@
 {
   "name": "gridfs-http-frontend",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A http forntend for serving files form MongoDB's GridFS",
   "main": "./lib/index.js",
   "keywords": ["mongo", "http", "gridfs", "server"],
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/rdkls/node-gridfs-http-frontend.git"
+    "url": "https://github.com/vvlad/node-gridfs-http-frontend.git"
   },
   "engines": {
     "node": ">=0.10.3"
